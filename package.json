@@ -1,0 +1,15 @@
+{
+	"name": "com.owencoopersfx.ocsfx-dotween-tools",
+	"version": "1.0.0",
+	"displayName": "OCSFX DOTween Tools",
+	"description": "",
+	"unity": "2020.1",
+	"dependencies": {
+		},
+	"keywords": ["tools", "extensions", "ocsfx", "dotween"],
+	"author": {
+		"name": "Owen Cooper",
+		"email": "owencoopersfx@gmail.com",
+		"url": "https://www.owencoopersound.com"
+	}
+}
