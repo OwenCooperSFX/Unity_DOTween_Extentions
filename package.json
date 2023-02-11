@@ -1,7 +1,7 @@
 {
   "name": "com.owencoopersfx.ocsfx-dotween",
   "version": "1.0.0",
-  "displayName": "OCSFX DOTween Tools",
+  "displayName": "OCSFX DOTween",
   "unity": "2020.1",
   "keywords": [
     "tools",
