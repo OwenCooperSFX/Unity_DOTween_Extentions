@@ -7,9 +7,8 @@ public enum TweenAnimScope { Local, World }
 [CreateAssetMenu(menuName = "TweenData")]
 public class TweenDataSO : ScriptableObject
 {
-    [SerializeField]
-    private TweenAnimType _tweenAnimType;
-    public TweenAnimType TweenAnimType { get => _tweenAnimType; set => _tweenAnimType = value; }
+    [SerializeField] private TweenAnimType _tweenAnimType;
+    public TweenAnimType TweenAnimType => _tweenAnimType;
 
     [Tooltip("Offset from the starting local scale, position, or rotation Vector3.")]
     [SerializeField] private Vector3 _startOffset = Vector3.zero;
@@ -20,9 +19,10 @@ public class TweenDataSO : ScriptableObject
     private float _defaultDuration = 1f;
     [Tooltip("Converts the duration value instead into a units/second speed.")]
     [SerializeField] private bool _convertDurationToSpeed = false;
-    public bool ConvertDurationToSpeed { get => _convertDurationToSpeed; }
 
-    public Vector3 StartOffset { get => _startOffset; set => _startOffset = value; }
+    public bool ConvertDurationToSpeed => _convertDurationToSpeed;
+
+    public Vector3 StartOffset => _startOffset;
     public Vector3 Destination { get => _destination; set => _destination = value; }
     public float Duration { get => _duration; set => _duration = value; }
 
@@ -37,9 +37,9 @@ public class TweenDataSO : ScriptableObject
     [SerializeField] private bool _playOnEnable = false;
     [SerializeField] private bool _resetOnDisable = true;
     public int Loops => _loops;
-    public float StartDelay { get => _startDelay; set => _startDelay = value; }
-    public bool PlayOnEnable { get => _playOnEnable; set => _playOnEnable = value; }
-    public bool ResetOnDisable { get => _resetOnDisable; set => _resetOnDisable = value; }
+    public float StartDelay => _startDelay;
+    public bool PlayOnEnable => _playOnEnable;
+    public bool ResetOnDisable => _resetOnDisable;
 
     private void OnEnable()
     {

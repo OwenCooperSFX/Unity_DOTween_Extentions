@@ -13,7 +13,7 @@ namespace OCSFX.DoTweenExtensions
 
         private TweenAnimType _tweenAnimType;
 
-        public Tween TweenInstance { get; private set; }
+        private Tween _tweenInstance;
 
         public Transform StartTransform { get; private set; }
 
@@ -35,7 +35,7 @@ namespace OCSFX.DoTweenExtensions
 
         private void OnDisable()
         {
-            TweenInstance?.Kill();
+            _tweenInstance?.Kill();
 
             if (TweenData.ResetOnDisable) ResetTransform();
         }
@@ -99,28 +99,30 @@ namespace OCSFX.DoTweenExtensions
             TweenData.Destination = destination;
         }
 
-        public void PlayTween()
+        public Tween PlayTween()
         {
             UpdateTweenData();
 
-            TweenInstance = CreateTween();
+            _tweenInstance = CreateTween();
 
             ResetTransform();
 
             if (TweenData.StartDelay > 0) StartCoroutine(Co_PlayTweenWithDelay(TweenData.StartDelay));
-            else TweenInstance.Play();
+            else _tweenInstance.Play();
+
+            return _tweenInstance;
         }
 
         public void PauseTween()
         {
-            if (TweenInstance.IsPlaying()) TweenInstance.Pause();
+            if (_tweenInstance.IsPlaying()) _tweenInstance.Pause();
         }
 
         private IEnumerator Co_PlayTweenWithDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
 
-            if (!TweenInstance.IsPlaying()) TweenInstance.Play();
+            if (!_tweenInstance.IsPlaying()) _tweenInstance.Play();
         }
 
         public void ResetTransform()
@@ -141,7 +143,7 @@ namespace OCSFX.DoTweenExtensions
 
         private Tween CreateTween()
         {
-            TweenInstance?.Kill();
+            _tweenInstance?.Kill();
 
             var destination = TweenData.Destination;
             var duration = TweenData.Duration;
@@ -175,7 +177,7 @@ namespace OCSFX.DoTweenExtensions
 
         public Tween GetTween()
         {
-            return TweenInstance;
+            return _tweenInstance;
         }
 
         #region Tween Creation Methods
